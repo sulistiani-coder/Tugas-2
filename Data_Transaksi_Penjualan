@@ -1,0 +1,63 @@
+print("\--------------------------------------------------/")
+print("|            Haii!, Selamat Datang ^_^           |")
+print("|--------------------------------------------------|")
+print("Ini adalah Sebuah sistem yg mencatat\ndata transaksi penjualan, silakan anda\nmemilih Menu nya di bawah ini.")
+transaksi = []
+
+def tambah_transaksi():
+    id_transaksi = input("Masukkan ID transaksi: ")
+    id_produk = input("Masukkan ID produk: ")
+    jumlah = int(input("Masukkan jumlah: "))
+
+    transaksi.append({
+        "id_transaksi": id_transaksi,
+        "id_produk": id_produk,
+        "jumlah": jumlah
+    })
+
+    print("\nTransaksi berhasil ditambahkan!")
+
+def tampilkan_transaksi():
+    print("\nDaftar Transaksi:")
+    for i, detail in enumerate(transaksi):
+        print(f"ID Transaksi: {detail['id_transaksi']}")
+        print(f"ID Produk: {detail['id_produk']}")
+        print(f"Jumlah: {detail['jumlah']}")
+        print()
+
+def cari_transaksi():
+    id_transaksi = input("\nMasukkan ID transaksi: ")
+    ketemu = False
+
+    for detail in transaksi:
+        if detail["id_transaksi"] == id_transaksi:
+            print(f"ID Transaksi: {detail['id_transaksi']}")
+            print(f"ID Produk: {detail['id_produk']}")
+            print(f"Jumlah: {detail['jumlah']}")
+            ketemu = True
+            break
+
+    if not ketemu:
+        print("\nTransaksi tidak ditemukan!")
+
+while True:
+    print("\n<::::::::::::::::::::::::::::::::::::::::::::::::::>")
+    print("<|             MENU            |>")
+    print("<::::::::::::::::::::::::::::::::::::::::::::::::::>")
+    print("\n1. Tambahkan Transaksi")
+    print("2. Tampilkan Semua Transaksi")
+    print("3. Cari Transaksi")
+    print("4. Keluar")
+
+    pilihan = input("\nInputkan Menu yg anda ingin pilih (1-4): ")
+
+    if pilihan == "1":
+        tambah_transaksi()
+    elif pilihan == "2":
+        tampilkan_transaksi()
+    elif pilihan == "3":
+        cari_transaksi()
+    elif pilihan == "4":
+        break
+    else:
+        print("Pilihan tidak valid!")
